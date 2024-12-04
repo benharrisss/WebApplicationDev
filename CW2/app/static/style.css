@@ -1,0 +1,94 @@
+/* Set the font and background colour of the whole Forum Site */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #000000;
+    background-color: #f1f1f1;
+}
+
+/* Sets header section to Sheffield Wednesday primary and secondary colours */
+header {
+    background-color: #4861cf;
+    color: #ffffff;
+    padding: 15px 20px;
+}
+
+
+/* Makes the text come from left to right and padding used to give appropriate spacing */
+.container-fluid {
+    width: 100%;
+    padding: 20px 40px;
+    max-width: 100%;
+    text-align: left;
+}
+
+/* Gives navbar very light grey background and a border between content and the navbar */
+.navbar {
+    background-color: #dbdbdb;
+    border-bottom: 2px solid #0e62aa;
+    
+}
+
+/* Gives the hyperlink on the navbar no decoration and appropriate colouring to be seen */
+nav a {
+    text-decoration: none;
+    color: #0e62aa;
+}
+
+/* Dashed outline when hovering over navbar for keyboard navigation and make sure text color is visible */
+nav a:hover, nav a:focus {
+    outline: 2px dashed #003469;
+    color: #4681cf;
+}
+
+/* Changes outline to solid when a navbar element is clicked */
+nav a:active {
+    outline: 2px solid #003469;
+}
+
+/* Colour of the button and the like button have the Sheffield Wednesday primary colour with a slightly darker border */
+button, .like-btn {
+    background-color: #4681cf;
+    border-color: #0e62aa;
+}
+
+/* Dashed outline when hovering over button for keyboard navigation */
+button:hover, button:focus {
+    outline: 2px dashed #003469;
+    background-color: #0e62aa;
+}
+
+/* Hyperlinks have no text decoration and have appropriate blue colouring */
+a {
+    color: #0e62aa;
+    text-decoration: none;
+}
+
+/* Slightly lighter colour when hovering over & Dashed outline when hovering over hyperlinks for keyboard navigation */
+a:hover, a:focus {
+    color: #8c8c8c;
+    text-decoration: none;
+    outline: 2px dashed #003469;
+}
+
+/* horizontal line matches primary colour scheme of the website */
+hr {
+   background-color: #4681cf;
+   outline: 2px solid #0e62aa;
+}
+
+/* Background for the posts - inline-block makes sure it only covers the length of the post text and there is a border around the post which includes a box shadow to seem more professional */
+.post-group {
+   background-color: #bbcdfc;
+   display: inline-block;
+   padding: 10px;
+   border-radius: 5px;
+   border: 2px solid #4681cf;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   
+}
+
+
+
+
+
+

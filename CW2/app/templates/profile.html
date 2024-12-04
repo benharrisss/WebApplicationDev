@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<h1>Profile</h1>
+<hr>
+<!-- Show user their details and hyperlink to the route to change their password -->
+<p><b>Username:</b> {{ user.username }}</p>
+<p><b>Email:</b> {{ user.email }}</p>
+<a href="{{ url_for('change_password') }}">Change Password</a>
+<hr>
+<h2>Your Posts:</h2>
+<ul>
+   <!-- List all posts created by the user that is logged in -->
+   {% for post in posts %}
+   <li>
+      <b>Title: <a href="{{ url_for('view_post', post_id=post.id) }}"></b>{{ post.title }}</a><br><b>Date:</b> {{ post.post_date.strftime('%Y-%m-%d') }} <br>
+      <br>
+   </li>
+   {% endfor %}
+</ul>
+<hr>
+<h2>Your Replies:</h2>
+<ul>
+   <!-- List all replies created by the user that is logged in -->
+   {% for reply in replies %}
+   <li>
+       <b>On post: <a href="{{ url_for('view_post', post_id=reply.post.id) }}"></b>{{ reply.post.title}}</a><br><b>Date:</b> {{ reply.post.post_date.strftime('%Y-%m-%d') }} <br>
+       <br>
+   </li>
+   {% endfor %}
+</ul>
+<hr>
+<h2>Your Liked Posts:</h2>
+<ul>
+   <!-- List all the posts that have been liked by the user logged in -->
+   {% for post in likes %}
+   <li>
+       <b>Title: <a href="{{ url_for('view_post', post_id=post.id) }}"></b>{{ post.title }}</a>
+   </li>
+   {% endfor %}
+</ul>
+{% endblock %}

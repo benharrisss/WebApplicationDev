@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Create a Post{% endblock %}
+{% block content %}
+<h1>Create a Post</h1>
+<hr>
+<!-- Form for a post title and post content -->
+<form method="POST">
+   {{ form.hidden_tag() }}
+   <div><b>{{ form.title.label }}:</b> {{ form.title(class="form-control") }}</div>
+   <div><b>{{ form.content.label }}:</b> {{ form.content(class="form-control") }}</div>
+      <br>
+   <div>{{ form.submit(class="btn btn-primary") }}</div>
+</form>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Home</h1>
+<hr>
+    <h3>This is Sheffield Wednesday Forums</h3>
+    <p>Here you can make posts, reply to other's posts and rate other's posts.</p>
+    <p>We only ask that you abide by these rules: </p>
+    <ul>
+       <!-- unordered list to outline website's rules -->
+       <li>Do not post anything that could be deemed racist, sexist or offensive to other members on the forum.</li>
+       <li>You have every right to disagree with other members of the forum and explain your perspective.</li>
+       <li>Do not attack, insult or belittle other memebers of the forum.</li>
+       <li>Remain respectful of other members of the forum at all times.</li>
+       <li>And most importantly, discussions and posts should be based only on Sheffield Wednesday.</li>
+    </ul>
+    <!-- Hyperlink to login route if not already logged in -->
+    <p>Login or Register an account with us to get started!</p>
+    <p><a href="{{ url_for('login') }}">Login here</a></p>
+<hr>
+{% endblock %}

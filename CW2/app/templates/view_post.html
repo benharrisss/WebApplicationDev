@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}View Post{% endblock %}
+{% block content %}
+<!-- CSS class to design post title and content in line with website theme -->
+<div class="post-group">
+   <h1><b>{{ post.title }}</b></h1>
+   <p>{{ post.content }}</p>
+</div class="post-group">
+<br>
+<br>
+<!-- Author, post date and like count below the post -->
+<p><b>Posted by:</b> {{ post.author.username }}</p>
+<p><b>Date:</b> {{ post.post_date.strftime('%Y-%m-%d %H:%m') }}</p>
+<p><b>Like Count:</b> <span id="like-count-{{ post.id }}">{{ post.likes_count or 0}}</span></p>
+<!-- aria-label to improve accessibility -->
+<button class="like-btn {% if post.id in liked_posts %}liked{% endif %}" data-post-id="{{ post.id }}" aria-label="Like this post">
+<!-- Like button that changes from like and unlike depending on if the post has been liked -->
+   {% if post.id in liked_posts %}Unlike{% else %}Like{% endif %}
+</button>
+<br>
+<br>
+<h2>Replies:</h2>
+<hr>
+<div>
+    <!-- Every reply from the post using CSS class in line with website theme -->
+    {% for reply in post.replies %}
+    <div>
+    	<div class="post-group">
+           <p>{{ reply.content }}</p>
+        </div class="post-group">
+        <br>
+        <br>
+        <!-- Author and post date of reply to the post -->
+        <p><b>Reply from:<b> {{ reply.author.username }}  Date: {{ reply.post_date.strftime('%Y-%m-%d %H:%m') }}</p>
+    </div>
+    <hr>
+    {% endfor %}
+</div>
+<!-- Form underneath all the replies so user can leave their own reply -->
+<form method="POST" action="{{ url_for('reply', post_id=post_id) }}">
+    {{ form.hidden_tag() }}
+    <div><b>Leave a reply:</b> <br> {{ form.content(rows=3, class="form-control") }}</div>
+    <br>
+    <div>{{ form.submit(class="btn btn-primary") }}</div>
+</form>
+<!-- link to external javascript file for handling likes -->
+<script src="{{ url_for('static', filename='likes.js') }}"></script>
+{% endblock %}
+
+
+        

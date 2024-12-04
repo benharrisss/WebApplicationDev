@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<h1>Login</h1>
+<hr>
+<!-- Form to enter a username and password that match with stored username and password -->
+<form method="POST">
+   {{ form.hidden_tag() }}
+   <div><b>{{ form.username.label }}:</b> {{ form.username(class="form-control") }}</div> <br>
+   <div><b>{{ form.password.label }}:</b> {{ form.password(class="form-control") }}</div>
+   <br>
+   <div>{{ form.submit(class="btn btn-primary") }}</div>
+</form>
+{% endblock %}

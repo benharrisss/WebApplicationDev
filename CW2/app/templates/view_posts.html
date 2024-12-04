@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Newest Posts{% endblock %}
+{% block content %}
+<h1>
+   <!-- Filter to change header if page is newest posts or top posts -->
+   {% if filter == "new" %}
+      Newest Posts
+   {% else %}
+      Top Posts
+   {% endif %}
+</h1>
+<hr>
+<div > 
+    <!-- Every post in the database using the CSS class in line with the website theme -->
+    {% for post in posts %}
+    <div>
+        <div class="post-group">
+           <h3><b>{{ post.title }}</b></h3>
+           <p>{{ post.content }}</p>
+        </div class="post-group">
+        <br>
+        <br>
+        <!-- Author, post date and like count of each post -->
+        <p><b>Posted by:</b> {{ post.author.username }}</p>
+        <p><b>Date:</b> {{ post.post_date.strftime('%Y-%m-%d %H:%m') }}</p>
+        <!-- aria-label to improve accessibility -->
+        <button class="like-btn {% if post.id in liked_posts %}liked{% endif %}" data-post-id="{{ post.id }}" aria-label="Like this post">
+        <!-- Like button that changes from like and unlike depending on if the post has been liked -->
+           {% if post.id in liked_posts %}Unlike{% else %}Like{% endif %}
+        </button>
+        <b><span id="like-count-{{ post.id }}">{{ post.likes_count or 0}}</span></b>
+        <br>
+        <br>
+        <!-- Hyperlink to specific post if user wants to view the post -->
+        <a href="{{ url_for('view_post', post_id=post.id) }}">View Post</a>
+    </div>
+    <hr>
+    {% endfor %}
+</div>
+<!-- link to external javascript file for handling likes -->
+<script src="{{ url_for('static', filename='likes.js') }}"></script>
+{% endblock %}
